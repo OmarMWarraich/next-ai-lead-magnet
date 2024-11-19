@@ -1,10 +1,15 @@
+import { auth, currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+  const user = await currentUser();
+
   return (
     <div className="relative flex min-h-screen flex-col p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-      <main className="mb-16 flex justify-center text-3xl">
+      <main className="mb-16 flex flex-col items-center text-3xl">
         Welcome to Next.js with Tailwind CSS!
+        {userId && user ? <h1>Hello {user.firstName}</h1> : <h1>No User</h1>}
       </main>
       <div className="flex grow items-center justify-center">
         {/* Additional content can go here */}

@@ -1,6 +1,9 @@
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 import { ModeToggle } from "@/components/navigation/ModeToggle";
+
+import { Button } from "../ui/button";
 
 export default function Navbar() {
   return (
@@ -10,7 +13,9 @@ export default function Navbar() {
       </div>
       <div className="flex items-center gap-4">
         <SignedOut>
-          <SignInButton />
+          <Link href="/sign-in">
+            <Button>Sign in</Button>
+          </Link>
         </SignedOut>
         <SignedIn>
           <UserButton />
