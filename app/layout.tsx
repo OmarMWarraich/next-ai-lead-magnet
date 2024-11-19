@@ -1,14 +1,9 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import Navbar from "@/components/navigation/Navbar";
 import { ThemeProvider } from "@/context/Theme";
 
 const geistSans = localFont({
@@ -45,12 +40,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+            <Navbar />
             {children}
           </ThemeProvider>
         </body>

@@ -1,13 +1,8 @@
 import Image from "next/image";
 
-import { ModeToggle } from "@/components/ModeToggle";
-
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-      <nav className="absolute right-8 top-8">
-        <ModeToggle />
-      </nav>
       <main className="mb-16 flex justify-center text-3xl">
         Welcome to Next.js with Tailwind CSS!
       </main>
