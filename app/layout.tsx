@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/context/Theme";
 
+import LandingPageFooter from "./(landing)/components/LandingPageFooter";
 import LandingPageNavbar from "./(landing)/components/LandingPageNavbar";
 
 const geistSans = localFont({
@@ -35,14 +36,15 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <LandingPageNavbar />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
+            <LandingPageNavbar />
             {children}
+            <LandingPageFooter />
           </ThemeProvider>
         </body>
       </html>
