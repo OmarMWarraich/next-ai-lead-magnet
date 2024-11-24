@@ -3,6 +3,8 @@ import React from "react";
 
 import { prismadb } from "@/lib/prismadb";
 
+import LeadMagnetsContainer from "./components/LeadMagnetsContainer";
+
 const getLeadMagnets = async (userId: string) => {
   try {
     const leadMagnets = await prismadb.leadMagnet.findMany({
@@ -46,9 +48,11 @@ const LeadMagnetsPage = async () => {
     leadsRequest,
   ]);
 
-  console.log(leadMagnets, leads);
-
-  return <div>LeadMagnetsPage</div>;
+  return (
+    <div>
+      <LeadMagnetsContainer leadMagnets={leadMagnets} leads={leads} />
+    </div>
+  );
 };
 
 export default LeadMagnetsPage;
