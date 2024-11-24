@@ -9,8 +9,6 @@ import { Button } from "@/components/ui/button";
 async function LandingPageNavbar() {
   const user: User | null = await currentUser();
 
-  console.log("USER", user);
-
   return (
     <nav className="flex w-screen items-center justify-between p-6 ">
       <div>
