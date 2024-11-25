@@ -88,7 +88,7 @@ const LeadMagnetEditorNavbar = () => {
     try {
       await remove();
       toast.success("Deleted!");
-      router.push("/lead-magnets");
+      router.push("/leadmagnets");
     } catch (error) {
       console.log(error);
       toast.error("Error deleting. Please try again.");
@@ -104,7 +104,7 @@ const LeadMagnetEditorNavbar = () => {
         <BsArrowLeft
           size={20}
           className="w-fit cursor-pointer pr-3"
-          onClick={() => void router.push("/leadmagnets")}
+          onClick={() => router.push("/leadmagnets")}
         />
         {/* Input / Name */}
         {editing ? (
@@ -126,7 +126,7 @@ const LeadMagnetEditorNavbar = () => {
             <BsCheck
               className="cursor-pointer"
               size={25}
-              onClick={() => void saveName()}
+              onClick={() => saveName()}
             />
             <span className="mx-1 border-r-2 border-gray-300" />
             <span

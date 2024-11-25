@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 
+import LeadMagnetContentEditor from "./LeadMagnetContentEditor";
 import LeadMagnetEditorNavbar from "./LeadMagnetEditorNavbar";
 
 export type LeadMagnetSections =
@@ -12,27 +13,27 @@ export type LeadMagnetSections =
   | "settings";
 
 const LeadMagnetEditor = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  // const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [selectedEditor, setSelectedEditor] =
     useState<LeadMagnetSections>("content");
 
   return (
     <div className="flex h-screen w-full flex-col overflow-y-hidden">
       <LeadMagnetEditorNavbar />
-      {/* <div className="flex h-full flex-row">
-        <LeadMagnetEditorSidebar
+      <div className="flex h-full flex-row">
+        {/* <LeadMagnetEditorSidebar
           isSidebarCollapsed={isSidebarCollapsed}
           setSelectedEditor={setSelectedEditor}
           setIsSidebarCollapsed={setIsSidebarCollapsed}
-        />
+        /> */}
         <div className="h-full grow">
           {selectedEditor === "content" && <LeadMagnetContentEditor />}
-          {selectedEditor === "prompt" && <LeadMagnetPromptEditor />}
+          {/* {selectedEditor === "prompt" && <LeadMagnetPromptEditor />}
           {selectedEditor === "email" && <LeadMagnetEmailEditor />}
           {selectedEditor === "profile" && <LeadMagnetProfileEditor />}
-          {selectedEditor === "settings" && <LeadMagnetSettings />}
+          {selectedEditor === "settings" && <LeadMagnetSettings />} */}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
