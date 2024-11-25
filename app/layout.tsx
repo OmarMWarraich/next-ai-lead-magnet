@@ -1,8 +1,9 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+
 import { ThemeProvider } from "@/context/Theme";
 
 import LandingPageFooter from "./(landing)/components/LandingPageFooter";
@@ -46,6 +47,7 @@ export default function RootLayout({
             {children}
             <LandingPageFooter />
           </ThemeProvider>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

@@ -57,6 +57,7 @@ export const LeadMagnetEditorContextProvider = ({
       }
     } catch (error) {
       toast.error("Failed to save Lead Magnet");
+      console.log(`${edittedLeadMagnet.id}`);
       console.error(error);
     }
   };
