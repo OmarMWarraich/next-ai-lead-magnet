@@ -12,6 +12,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^1.0.4",
     "@clerk/nextjs": "^6.4.0",
     "@prisma/client": "^5.22.0",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
