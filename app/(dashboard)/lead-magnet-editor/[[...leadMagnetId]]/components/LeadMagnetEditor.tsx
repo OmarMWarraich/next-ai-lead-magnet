@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 
+import LeadMagnetEditorNavbar from "./LeadMagnetEditorNavbar";
+
 export type LeadMagnetSections =
   | "content"
   | "prompt"
   | "email"
-  | "email"
+  | "profile"
   | "settings";
 
 const LeadMagnetEditor = () => {
@@ -16,7 +18,21 @@ const LeadMagnetEditor = () => {
 
   return (
     <div className="flex h-screen w-full flex-col overflow-y-hidden">
-      {/* <LeadMagnetEditorNavbar /> */}
+      <LeadMagnetEditorNavbar />
+      {/* <div className="flex h-full flex-row">
+        <LeadMagnetEditorSidebar
+          isSidebarCollapsed={isSidebarCollapsed}
+          setSelectedEditor={setSelectedEditor}
+          setIsSidebarCollapsed={setIsSidebarCollapsed}
+        />
+        <div className="h-full grow">
+          {selectedEditor === "content" && <LeadMagnetContentEditor />}
+          {selectedEditor === "prompt" && <LeadMagnetPromptEditor />}
+          {selectedEditor === "email" && <LeadMagnetEmailEditor />}
+          {selectedEditor === "profile" && <LeadMagnetProfileEditor />}
+          {selectedEditor === "settings" && <LeadMagnetSettings />}
+        </div>
+      </div> */}
     </div>
   );
 };

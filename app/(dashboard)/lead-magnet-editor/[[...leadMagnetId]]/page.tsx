@@ -1,5 +1,5 @@
 import { LeadMagnet } from "@prisma/client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import LeadMagnetNotFound from "@/components/LeadMagnetNotFound";
 import { prismadb } from "@/lib/prismadb";
@@ -13,35 +13,29 @@ interface LeadMagnetEditorParams {
   };
 }
 
-function LeadMagnetEditorPage({ params }: LeadMagnetEditorParams) {
-  const [leadMagnet, setLeadMagnet] = useState<LeadMagnet | null>(null);
+async function LeadMagnetEditorPage({ params }: LeadMagnetEditorParams) {
   const leadMagnetId =
     params.leadMagnetId?.length > 0 ? params.leadMagnetId[0] : null;
 
-  useEffect(() => {
-    const fetchLeadMagnet = async () => {
-      if (!leadMagnetId) {
-        setLeadMagnet(DEFAULT_LEAD_MAGNET);
-      } else {
-        const fetchedLeadMagnet = await prismadb.leadMagnet.findUnique({
-          where: { id: leadMagnetId },
-        });
-        setLeadMagnet(fetchedLeadMagnet);
-      }
-    };
+  console.log("leadMagnetId", leadMagnetId);
 
-    fetchLeadMagnet();
-  }, [leadMagnetId]);
+  let leadMagnet: LeadMagnet | null = null;
 
-  if (leadMagnet === null) {
+  if (!leadMagnetId) {
+    leadMagnet = DEFAULT_LEAD_MAGNET;
+  } else {
+    leadMagnet = await prismadb.leadMagnet.findUnique({
+      where: {
+        id: leadMagnetId,
+      },
+    });
+  }
+
+  if (!leadMagnet) {
     return <LeadMagnetNotFound returnLink="/leadmagnets" />;
   }
 
-  return (
-    <div>
-      <LeadMagnetEditorContainer leadMagnet={leadMagnet} />
-    </div>
-  );
+  return <LeadMagnetEditorContainer leadMagnet={leadMagnet} />;
 }
 
 export default LeadMagnetEditorPage;
