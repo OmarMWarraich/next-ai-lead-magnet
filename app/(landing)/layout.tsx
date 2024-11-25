@@ -1,5 +1,7 @@
 import React from "react";
 
+import LandingPageNavbar from "./components/LandingPageNavbar";
+
 function LandingLayout({
   children, // will be a page or nested layout
 }: {
@@ -7,6 +9,7 @@ function LandingLayout({
 }) {
   return (
     <section className="flex min-h-screen flex-col overflow-x-clip">
+      <LandingPageNavbar />
       <div className="grow">{children}</div>
     </section>
   );

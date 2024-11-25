@@ -27,12 +27,12 @@ const LeadMagnetEditorNavbar = () => {
   const [unpublishing, setUnpublishing] = React.useState(false);
   const [deleting, setDeleting] = React.useState(false);
 
-  console.log(edittedLeadMagnet);
+  console.log("edittedLeadMagnet", edittedLeadMagnet);
 
   const saveName = async () => {
     try {
       await saveLeadMagnet();
-      toast.success("Saved!");
+      toast.success("Saved!"); // TODO:
       setEditing(false);
     } catch (error) {
       console.log(error);
@@ -100,12 +100,13 @@ const LeadMagnetEditorNavbar = () => {
   return (
     <div className="flex w-full flex-row items-center justify-between border-b border-solid border-gray-200 bg-white p-3 text-gray-600">
       <div className="flex flex-row items-center">
+        {/* sGo Back */}
         <BsArrowLeft
           size={20}
           className="w-fit cursor-pointer pr-3"
-          onClick={() => router.push("/lead-magnets")}
+          onClick={() => void router.push("/leadmagnets")}
         />
-        {/* TODO: Input / Name */}
+        {/* Input / Name */}
         {editing ? (
           <Input
             value={edittedLeadMagnet.name}
@@ -119,13 +120,13 @@ const LeadMagnetEditorNavbar = () => {
         ) : (
           <span className="text-xl font-bold">{edittedLeadMagnet.name}</span>
         )}
-        {/* TODO: Edit / Save */}
+        {/*  Edit / Save */}
         {editing ? (
           <div className="flex flex-row text-purple-500">
             <BsCheck
               className="cursor-pointer"
               size={25}
-              onClick={() => saveName()}
+              onClick={() => void saveName()}
             />
             <span className="mx-1 border-r-2 border-gray-300" />
             <span
@@ -144,34 +145,35 @@ const LeadMagnetEditorNavbar = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-row items-center gap-4">
-        {/* TODO: Delete with state */}
+      <div className="flex flex-row items-center gap-x-4">
+        {/* Delete with state */}
         {edittedLeadMagnet.id && (
           <Button onClick={handleDelete} variant="destructive">
-            {deleting ? "Deleting..." : "Delete"}
+            {deleting ? "Deleting" : "Delete"}
           </Button>
         )}
-        {/* TODO: Unpublish and view Final LM */}
+        {/* Unpublish and View Final LM */}
         {edittedLeadMagnet.status === "published" && (
           <>
             <Button variant="outline" onClick={handleUnpublish}>
               {unpublishing ? "Unpublishing..." : "Unpublish"}
             </Button>
-            {/* TODO: Change test to ${account.username} */}
-            <Link href={`/lm/test/${edittedLeadMagnet.slug}`}>
+            {/* {account && ( */}
+            {/* TODO: REMOVE paranthesis */}
+            {/* TODO: ADD ${account?.username} */}
+            <Link href={`/lm/()/${edittedLeadMagnet.slug}`}>
               <Button variant="outline">View Published</Button>
             </Link>
+            {/* )} */}
           </>
         )}
-        {/* TODO: Save & Publish  with state */}
-        <div className="flex gap-4">
-          <Button variant="secondary" onClick={handleSave}>
-            {saving ? "Saving..." : "Save"}
-          </Button>
-          <Button variant="secondary" onClick={handlePublish}>
-            {publishing ? "Publishing..." : "Publish"}
-          </Button>
-        </div>
+        {/* Save & Publish with state */}
+        <Button variant="outline" onClick={handleSave}>
+          {saving ? "Saving..." : "Save"}
+        </Button>
+        <Button onClick={handlePublish}>
+          {publishing ? "Publishing..." : "Publish"}
+        </Button>
       </div>
     </div>
   );

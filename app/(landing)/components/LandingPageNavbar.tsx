@@ -20,7 +20,7 @@ async function LandingPageNavbar() {
         <div className="text-lg font-semibold">
           {user ? (
             <div className="flex flex-row items-center gap-x-4">
-              <Link href="/lead-magnets">
+              <Link href="/leadmagnets">
                 <Button variant="outline">Open App</Button>
               </Link>
               <UserButton />
